@@ -1,0 +1,25 @@
+{
+  "name": "koa-geolocation-middleware",
+  "version": "1.0.0",
+  "description": ".: koa geolocation middleware :.",
+  "main": "app.js",
+  "dependencies": {
+    "koa": "^1.1.0",
+    "koa-request": "^1.0.0",
+    "koa-route": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stannesi/koa-geolocation-middleware.git"
+  },
+  "author": "stannesi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stannesi/koa-geolocation-middleware/issues"
+  },
+  "homepage": "https://github.com/stannesi/koa-geolocation-middleware#readme"
+}
