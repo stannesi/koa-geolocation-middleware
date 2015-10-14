@@ -1,2 +1,2 @@
-# koa-geolocation-middleware
+# KOA Geolocation Middleware
 .: koa geolocation middleware :.
