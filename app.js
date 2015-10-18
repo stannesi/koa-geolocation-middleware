@@ -1,32 +1,47 @@
 var koa = require('koa'),
     koa_request = require('koa-request'),
     koa_route = require('koa-route'),
+    views = require('co-views'),
     port = 3000;
 
 var app = koa();
 
+var render = views(__dirname + '/views', {ext: 'ejs' })
+
 // route middleware
-app.use(koa_route.get('/', getGeoInfo));
+app.use(koa_route.get('/', showIndex));
 app.use(koa_route.get('/:ip', getGeoInfo));
 app.use(koa_route.get('/json/:ip', getGeoInfo));
 
-// json
+// render index
+function *showIndex(){
+     try {
+        this.type = 'text/html';
+        this.body = yield render('empty', { });
+     } catch (err) {    
+        this.type = 'text/html';
+        this.body = yield render('error', {err});
+     }
+};
+
+// render json
 function *getGeoInfo(ip) {
-    var options = {
-        url: 'http://freegeoip.net/json' + '/' + ip,
-        headers: { 'User-Agent': 'request' }
-    };
- 
-    this.body  =  '';
-    
-    var response = yield koa_request(options);
-    var info = JSON.parse(response.body);
-    
-    this.type = 'text/html';
-    
-    for (var key in info) {
-        this.body = this.body + '<b>' + key + ': </b>' + info[key] + '<br/>';
-    }
+    try {
+        var options = {
+            url: 'http://freegeoip.net/json' + '/' + ip,
+            headers: { 'User-Agent': 'request' }
+        };
+
+        var response = yield koa_request(options);
+        var info = JSON.parse(response.body);
+
+        this.type = 'text/html';
+
+        this.body = yield render('geo', {info});
+     } catch (err) {    
+        this.type = 'text/html';
+        this.body =  yield render('error', {err});
+     }
 }
 
 // x-response-time

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Koa Geolocation Middleware</title>
+        
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: #4A4D4E;
+                color: #F0F1F1;
+                font-family: source-sans-pro, sans-serif;
+                position: relative;   
+                margin: 5px 50px;
+            }
+
+            header {
+                color: #373435;
+                background: #fff;
+                height: 98px;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 10px 20px;
+                position: relative;
+                border-bottom: 1px solid #58595A;
+            }  
+             
+            .t-table {
+                display: table;
+                width: 100%;
+            }
+            
+            .t-body { 
+                display: table-row-group; 
+            }
+                        
+            .t-row {
+                display: table-row;
+            }
+            
+            .t-cell {
+                display: table-cell;
+                padding: 5px 30px;
+                border: 1px solid #999999;
+            }
+            
+            .t-cell.title {
+                text-transform: uppercase;
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Koa Geolocation Middleware</h1>
+        </header>
+
+        <div class="t-table">
+            <div class="t-row">
+                <div class="t-cell title">Key</div>    
+                <div class="t-cell title">Value</div>
+            </div>
+
+            <div class="t-body">
+                <% for (var key in info) { %>
+                    <div class="t-row">
+                        <div class="t-cell">
+                             <%=  key %>
+                        </div>
+                        <div class="t-cell">
+                            <%= info[key] %>
+                        </div>
+                    </div>           
+                <% } %>
+            </div>
+        </div> 
+    </body>
+</html>
