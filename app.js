@@ -2,7 +2,7 @@ var koa = require('koa'),
     koa_request = require('koa-request'),
     koa_route = require('koa-route'),
     views = require('co-views'),
-    port = 3000;
+    port = process.env.PORT || 3000;
 
 var app = koa();
 
